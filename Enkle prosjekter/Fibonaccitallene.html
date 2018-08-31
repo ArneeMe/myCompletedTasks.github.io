@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonaccitallene</title>
+</head>
+<body>
+    <script>
+
+        var tallA = 0;
+        var tallB = 1;
+        var tallF = tallA + tallB;
+
+        document.write (tallA + "," + tallB +",");
+        document.write (tallF + ",");
+
+        for (var i=1; i <= 10; i++) {
+            tallA = tallB;
+            tallB = tallF;
+            tallF = tallA + tallB;
+
+            document.write(tallF + ",");
+
+        }
+
+
+    </script>
+</body>
+</html>

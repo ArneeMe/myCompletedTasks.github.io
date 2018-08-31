@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Termometer-kalkulator</title>
+</head>
+<body>
+    <h1> Termometer-kalkulator </h1>
+
+    <script>
+
+        var fahrenheit = Number (prompt("Skriv inn temperatur i fahrenheit"));
+        var celsuis = (fahrenheit-32)/1.8;
+
+        console.log(celsuis);
+
+        document.write(`${fahrenheit} grader fahrenheit er ${celsuis.toFixed(2)} grader celsuis`)
+
+
+    </script>
+</body>
+</html>

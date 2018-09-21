@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While-løkker</title>
+</head>
+<body>
+
+    <canvas id="minCanvas" width="1000" height="1000"></canvas>
+    <script>
+        var canvas = document.getElementById("minCanvas");
+        var ctx = canvas.getContext("2d");
+        var side = 500;
+        var xPos = 0;
+        var yPos = 0;
+
+        while (side > 0 ){
+            ctx.rect (xPos, yPos, side, side);
+            ctx.stroke();
+            side = side -8;
+            xPos = xPos + 4;
+            yPos = yPos + 4;
+
+
+        }
+
+
+    </script>
+</body>
+</html>

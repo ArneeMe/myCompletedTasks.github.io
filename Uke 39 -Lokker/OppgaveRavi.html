@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ravi Oppgave</title>
+</head>
+<body>
+<input type=number id="svar" placeholder="Skriv inn et tall her">
+<div id="divSvar"></div>
+<button id="button"> Bruk meg</button>
+<br>
+<div id="divSpor"></div>
+<button id="buttonJa" ></button>
+<button id="buttonNei"></button>
+
+<script>
+            var svar = document.getElementById("svar");
+            var divSvar = document.getElementById("divSvar");
+            var button = document.getElementById("button");
+            var divSpor = document.getElementById("divSpor");
+            var buttonJa = document.getElementById("buttonJa");
+            var buttonNei = document.getElementById("buttonNei");
+
+            var elementer = [
+                "button",
+                "divSpor",
+                "buttonJa",
+                "buttonNei"
+            ];
+
+            button.onclick = function () {
+                if (svar.value  % 2 === 0) {
+                    divSvar.innerHTML = "Partall"
+                } else {
+                    divSvar.innerHTML = "Oddetall"
+                }
+                buttonJa.innerHTML= "Ja";
+                buttonNei.innerHTML= "Nei";
+                divSpor.innerHTML = "Vil du fortsette?";
+            };
+            buttonJa.onclick = function (){
+                for (var i = 0; i <= elementer.length - 1; i++) {
+                    console.log(i);
+                    document.getElementById(elementer[i]).innerHTML = "";
+                }
+            }
+            buttonNei.onclick = function () {
+                divSpor.innerHTML ="";
+                buttonJa.innerHTML= "";
+                buttonNei.innerHTML= "";
+                button.innerHTML ="";
+
+            }
+
+
+
+
+</script>
+</body>
+</html>

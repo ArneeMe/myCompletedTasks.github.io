@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" ></canvas>
+
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+
+        window.onclick = function (e) {
+
+                var x = e.pageX;
+                var y = e.pageY;
+                ctx.beginPath();
+                ctx.arc(x, y, 25, 0, 2 * (Math.PI));
+                ctx.fill();
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ja</title>
+</head>
+<body>
+    <canvas id="canvas" height="600" width="600"></canvas>
+
+    <script>
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+
+
+        for (var i=0; i < 500; i++) {
+
+            var x =Math.random()* window.innerWidth;
+            var y =Math.random()* window.innerHeight;
+            ctx.fillstyle = getRandomColor();
+            ctx.beginPath();
+            ctx.arc(x, y, 25, 0, 2 * (Math.PI));
+            ctx.fill();
+
+        }
+
+
+           function getRandomColor (){
+           var letters = "0"
+
+
+
+    </script>
+</body>
+</html>

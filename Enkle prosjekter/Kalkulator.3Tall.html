@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="number" id="tall1" placeholder="tall">
+    <input type="number" id="tall2" placeholder="tall2">
+    <input type="text"   id="tegn" placeholder="tegn">
+
+    <button id="knapp">Regn ut</button>
+
+    <div id="resultat"></div>
+
+    <script>
+        var tall1 =document.getElementById("tall1");
+        var tall2 = document.getElementById("tall2");
+        var tegn = document.getElementById("tegn");
+        var knapp = document.getElementById("knapp");
+        var resultat = document.getElementById("resultat");
+
+        //---
+
+        knapp.onclick = function () {
+            if (tegn.input === "+") {
+            resultat.innerHTML = Number(tall1.value) + Number (tall2.value)
+            }
+            else if(tegn.input === "-") {
+                resultat.innerHTML = Number(tall1.value) - Number(tall2.value);
+            }
+
+             else if (tegn.input === "/") {
+                resultat.innerHTML = Number(tall1.value) / Number(tall2.value);
+            }
+            else if (tegn.input === "*") {
+                    resultat.innerHTML = Number(tall1.value) * Number (tall2.value)
+            }
+        }
+    </script>
+
+</body>
+</html>

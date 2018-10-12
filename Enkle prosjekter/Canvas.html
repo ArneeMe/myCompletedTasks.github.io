@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas testing</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="600"></canvas>
+
+    <script>
+        /*
+        var myCanvas = document.getElementById("myCanvas");
+        var ctx =myCanvas.getContext("2d");
+
+        ctx.fillRect(0,0,100,100);
+
+        ctx.fillRect (100,100,50,50);
+
+        ctx.fillStyle ="red";
+
+        ctx.fillRect (150,125,25,25);
+
+        ctx.fillRect (125, 150,25,25);
+
+        ctx.strokeStyle = "yellow";
+        ctx.moveTo (100,100);
+        ctx.lineTo(300,300);
+        ctx.stroke()
+
+        */
+
+        var myCanvas = document.getElementById("myCanvas");
+        var ctx =myCanvas.getContext("2d");
+
+        ctx.fillStyle ="red";
+        ctx.fillRect (0,0,60,60);
+
+        ctx.fillRect (0,100,60,60);
+
+        ctx.fillRect (100,0,120,60);
+
+        ctx.fillRect(100,100,120,60);
+
+        ctx.fillStyle ="#001489";
+
+        ctx.fillRect (70,0,20, 160);
+
+        ctx.fillRect(0,70,220,20);
+
+        ctx.moveTo(200,200);
+
+        ctx.lineTo (215,200);
+        ctx.stroke ();
+
+        ctx.lineTo (215,215);
+        ctx.stroke ();
+
+        ctx.lineTo(200,215);
+        ctx.stroke ();
+
+        ctx.lineTo (200,200);
+        ctx.stroke ();
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

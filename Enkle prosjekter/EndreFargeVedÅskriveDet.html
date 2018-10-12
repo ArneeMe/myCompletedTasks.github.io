@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator med input</title>
+</head>
+<body>
+
+
+    <h1> Nååå var det gøy å endre farge nå</h1>
+    <input type="text" id="inpFarge">
+
+    <script>
+        var inpFarge = document.getElementById ("inpFarge");
+
+        inpFarge.onkeyup = function () {
+            document.body.style.backgroundColor = inpFarge.value;
+        };
+
+    </script>
+</body>
+</html>

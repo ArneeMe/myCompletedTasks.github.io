@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+<img id="bilde1" height="120px" width="120px">
+<img id="bilde2" height="120px" width="120px">
+<img id="bilde3" height="120px" width="120px">
+-->
+
+<audio id="lyd" controls></audio>
+<br>
+<button onclick="spillLyd ()">Trykk her for å høre sang</button>
+<br>
+<br>
+<button onclick="sjekkSvar0 ()">You'll be back</button>
+<button onclick="sjekkSvar1 ()"> What comes next?</button>
+<button onclick="sjekkSvar2 ()">I know him</button>
+
+
+<script>
+   /* let bilde1 = document.getElementById("bilde1");
+    let bilde2 = document.getElementById("bilde2");
+    let bilde3 = document.getElementById("bilde3");
+   */
+    let lyd = document.getElementById("lyd");
+    let lydArray = ["07_You_ll_Be_Back.mp3","21_What_Comes_Next.mp3", "33_I_Know_Him.mp3"]; // De tre sangene jeg ønsker
+    let x =Math.floor(Math.random ()*lydArray.length); // x er et tilfeldig tall som kan bli brukt til å beskrive arreyen min
+    console.log(x);
+
+    let feil = 0;
+    let antallRiktig = 0;
+    let r;
+
+
+        function spillLyd() {
+            if (antallRiktig === 0) { //problem at hvis jeg har gjettet riktig en gang vil koden bare kjøre med else
+                lyd.src = lydArray [x];
+                lyd.play()
+            }
+            else if (antallRiktig === 1) {
+                r = Math.floor(Math.random ()*lydArray.length);
+                while (x ===r) {
+                    r = Math.floor(Math.random ()*lydArray.length)
+                }
+                x = r;
+
+                lyd.src = lydArray [x];
+                lyd.play()
+            }
+            else if (antallRiktig === 2){
+                let n = Math.floor(Math.random ()*lydArray.length);
+                while (n ===r || n===x) {
+                    n = Math.floor(Math.random ()*lydArray.length)
+                }
+                x  = n ;
+
+                lyd.src = lydArray [x];
+                lyd.play ()
+
+
+
+
+            }
+
+            else {
+               prompt("Grattis, alt riktig!")
+            }
+        }
+
+
+        function sjekkSvar0 (){
+            if (x===0){
+
+                prompt("Riktig!");
+
+                antallRiktig = antallRiktig +1;
+            }
+
+            else {
+                prompt("Feil");
+
+                feil = feil +1;
+            }
+
+
+        }
+
+        function sjekkSvar1() {
+            if (x===1){
+                prompt("Riktig!");
+
+                antallRiktig = antallRiktig +1;
+            }
+
+            else {
+                prompt("Feil");
+
+                feil = feil +1;
+            }
+
+
+        }
+
+        function sjekkSvar2() {
+            if (x===2){
+                prompt("Riktig!");
+
+                antallRiktig = antallRiktig +1;
+            }
+
+            else {
+                prompt("Feil");
+
+                feil = feil +1;
+            }
+
+        }
+
+
+
+
+
+
+</script>
+</body>
+</html>

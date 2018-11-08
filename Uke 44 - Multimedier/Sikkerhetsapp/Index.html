@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    .btn {
+    background-color: DodgerBlue; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+        text-align: center;
+    }
+
+
+    .btn:hover {
+    background-color: RoyalBlue;
+    }
+
+    .glow {
+        font-size: 40px;
+        color: #fff;
+
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @-webkit-keyframes glow {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+        }
+        to {
+            text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        }
+    }
+
+</style>
+</head>
+<body>
+    <button onclick="nyPerson()" class="btn">Ny person</button>
+    <button onclick="fjernPerson ()" class="btn">Fjern person</button>
+    <p id="antallPersonerTekst" class="glow"></p>
+
+
+    <script>
+       let antallPersonerTekst =  document.getElementById("antallPersonerTekst");
+
+       let antallPersoner = 0;
+
+       antallPersonerTekst.innerHTML = "Det er " + antallPersoner + " i salen akkuratt nå." ;
+
+
+       window.onkeydown = function (event){
+           if (event.code === "ArrowUp"){
+               nyPerson()
+
+           }
+
+           else if  (event.code=== "ArrowDown"){
+               fjernPerson()
+           }
+
+       };
+
+
+       function nyPerson() {
+           antallPersoner = antallPersoner + 1;
+           if (antallPersoner < 55) {
+               antallPersonerTekst.innerHTML = "Det er " + antallPersoner + " i salen akkuratt nå.";
+           }
+           else if (antallPersoner < 60) {
+               antallPersonerTekst.innerHTML = "Det er " + antallPersoner + " i salen akkuratt nå. Da er det snart fullt!";
+           }
+           else {
+               antallPersonerTekst.innerHTML = "DET ER FULLT! Det er " + antallPersoner + " tilstede akkuratt nå!";
+           }
+       }
+       function fjernPerson() {
+           if (antallPersoner <= 0 ) {
+               antallPersonerTekst.innerHTML = "Nå er det helt tomt altså";
+           }
+           else if (antallPersoner < 56) {
+               antallPersoner = antallPersoner - 1;
+               antallPersonerTekst.innerHTML = "Det er " + antallPersoner + " i salen akkuratt nå.";
+       }
+           else if (antallPersoner < 61) {
+               antallPersoner = antallPersoner - 1;
+               antallPersonerTekst.innerHTML = "Det er " + antallPersoner + " i salen akkuratt nå. Da er det snart fullt!";
+           }
+           else{
+               antallPersoner = antallPersoner - 1;
+               antallPersonerTekst.innerHTML = "DET ER FULLT! Det er " + antallPersoner + " tilstede akkuratt nå!";
+           }
+
+       }
+
+    </script>
+</body>
+</html>

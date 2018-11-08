@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            cursor: none;
+        }
+        #firkant{
+            width: 100px;
+            height: 100px;
+            margin-left: 0px;
+            margin-top: 0px;
+            border-radius: 50%;
+            position: absolute;
+            transition:0.01s
+
+        }
+
+        #sjokomelk {
+            width: 50px;
+            height: 80px;
+            margin-left: 0;
+            margin-top: 0;
+            position: absolute;
+        }
+
+        #moxnes {
+            width: 100px;
+            height: 160px;
+            margin-left: 0;
+            margin-top: 0;
+            position: absolute;
+
+        }
+    </style>
+
+</head>
+<body>
+<img src="sjokomelk.jpeg" id="sjokomelk">
+<img src="bardhoksrud.jpeg" id="firkant">
+<img src="moxnes.jpg" id="moxnes">
+
+
+<script>
+    let firkant = document.getElementById("firkant"); // oppretter en variabel som refererer til div-elementet
+    let sjokomelk = document.getElementById("sjokomelk");
+    let moxnes = document.getElementById("moxnes");
+    let x = 0;
+    let y = 0;
+
+    let sjokomelkX= Math.floor(Math.random()*1000);
+    let sjokomelkY = Math.floor(Math.random()*400);
+
+    let moxnesX = Math.floor(Math.random()*1000);
+    let moxnesY = Math.floor(Math.random()*400);
+
+    let moxnesTall = 0; //Variabel som gjør at moxnes ikke beveger seg hver gang funksjonen skjer
+
+
+    moxnes.style.marginLeft= moxnesX + "px";
+    moxnes.style.marginTop = moxnesY + "px";
+
+
+
+    console.log("randomx er = " + sjokomelkX);
+    console.log("randomy er = " + sjokomelkY);
+    console.log (x);
+    console.log (y);
+
+    sjokomelk.style.marginLeft = sjokomelkX +"px";
+    sjokomelk.style.marginTop = sjokomelkY +"px";
+
+
+    window.onkeydown = function(event){
+
+
+       if (event.code === "ArrowLeft"){
+           x = x - 2;
+       }
+       if(event.code === "ArrowUp"){
+           y = y - 2;
+
+       }
+      if(event.code === "ArrowDown"){
+           y = y + 2;
+       }
+
+      if (event.code === "ArrowRight"){
+
+           x = x + 2;
+       }
+
+       moxnesTall = moxnesTall + 1;
+      if (moxnesTall === 5) {
+          moxnesX = Math.floor(Math.random()*3)*x;
+          moxnesY = Math.floor(Math.random()*3)*y;
+          moxnes.style.marginLeft= moxnesX + "px";
+          moxnes.style.marginTop = moxnesY + "px";
+
+          moxnesTall = 0
+      }
+
+
+
+        console.log("x= " + x); // skriver ut x-koordinaten i konsollen
+        console.log("y= " + y);
+        firkant.style.marginLeft = x + "px"; // firkant sin marginLeft skal være lik verdien av x pluss stringen "px"
+        firkant.style.marginTop = y + "px";
+
+
+    }
+
+</script>
+
+</body>
+</html>

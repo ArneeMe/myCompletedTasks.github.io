@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            cursor: none;
+        }
+        #firkant{
+            width: 100px;
+            height: 100px;
+            margin-left: 0px;
+            margin-top: 0px;
+            border-radius: 50%;
+            position: absolute;
+            transition:0.01s
+
+        }
+
+        #sjokomelk {
+            width: 80px;
+            height: 80px;
+            margin-left: 0;
+            margin-top: 0;
+            border-radius: 50% ;
+            position: absolute;
+        }
+
+        #moxnes {
+            width: 100px;
+            height: 100px;
+            margin-left: 0;
+            margin-top: 0;
+            border-radius: 50%;
+            position: absolute;
+
+        }
+        .headline{
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .tekst{
+            border: none;
+            color: green;
+            padding: 5px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="headline">
+
+
+        <button class="button"> Bytt "playericon" </button>
+        <p id="highscore" class="tekst"> Highscoren din er 0</p>
+        <p id="level" class="tekst">Du er på level 1</p>
+</div>
+<img src="sjokomelkRedigert1.jpg" id="sjokomelk">
+<img src="bardhoksrud.jpeg" id="firkant">
+<img src="moxnes2Redigert.jpg" id="moxnes">
+
+
+<script>
+    let firkant = document.getElementById("firkant"); // oppretter en variabel som refererer til div-elementet
+    let sjokomelk = document.getElementById("sjokomelk");
+    let moxnes = document.getElementById("moxnes");
+    let x = 1;
+    let y = 1;
+
+    let sjokomelkX= Math.floor(Math.random()*1000);
+    let sjokomelkY = Math.floor(Math.random()*400);
+
+    let moxnesX = Math.floor(Math.random()*400);
+    let moxnesY = Math.floor(Math.random()*400);
+
+    let moxnesTall = 0; //Variabel som gjør at moxnes ikke beveger seg hver gang funksjonen skjer
+
+    let bildeArray = [];
+
+    moxnes.style.marginLeft= moxnesX + "px";
+    moxnes.style.marginTop = moxnesY + "px";
+
+
+    console.log (x);
+    console.log (y);
+
+    sjokomelk.style.marginLeft = sjokomelkX +"px";
+    sjokomelk.style.marginTop = sjokomelkY +"px";
+
+
+    window.onkeydown = function(event){
+
+
+        if (x >0) {
+
+            if (event.code === "ArrowLeft") {
+                x = x - 2;
+                posisjonMoxnes();
+                sjekkKollisjon();
+            }
+
+        }
+        if (y>0) {
+            if (event.code === "ArrowUp") {
+                y = y - 2;
+                posisjonMoxnes();
+                sjekkKollisjon();
+            }
+        }
+
+        if (event.code === "ArrowDown") {
+            y = y + 2;
+            posisjonMoxnes();
+            sjekkKollisjon();
+
+        }
+
+        if (event.code === "ArrowRight") {
+            x = x + 2;
+            posisjonMoxnes();
+            sjekkKollisjon();
+        }
+        console.log("x= " + x); // skriver ut x-koordinaten i konsollen
+        console.log("y= " + y);
+        firkant.style.marginLeft = x + "px"; // firkant sin marginLeft skal være lik verdien av x pluss stringen "px"
+        firkant.style.marginTop = y + "px";
+
+    };
+
+    function posisjonMoxnes () {
+        moxnesTall = moxnesTall + 1;
+        if (moxnesTall === 5) {
+            moxnesX = 1000 - x;   //-Math.floor(Math.random()*3)*x;
+            moxnesY = 400- y;     //moxnesY-Math.floor(Math.random()*3)*y;
+            moxnes.style.marginLeft = moxnesX + "px";
+            moxnes.style.marginTop = moxnesY + "px";
+
+            moxnesTall = 0;
+
+            console.log("moxnesX er = " + moxnesX);
+            console.log("moxnesY er = " + moxnesY);
+        }
+    }
+
+    function sjekkKollisjon (){
+        for (let i = 1; i <= 3; i++   ){
+            for (let h = 1; h <= 2; h++){
+                console.log("h er " + h)
+            }
+            console.log ("i er " + i)
+        }
+
+
+    }
+</script>
+
+</body>
+</html>

@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 
     <style>
         body{
             cursor: none;
+        }
+
+        #cssSelector{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            background: black;
+
         }
         #firkant{
             width: 100px;
@@ -15,13 +24,13 @@
             margin-top: 0px;
             border-radius: 50%;
             position: absolute;
-            transition:0.01s
+            transition:0s;
 
         }
 
         #sjokomelk {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             margin-left: 0;
             margin-top: 0;
             border-radius: 50% ;
@@ -63,16 +72,24 @@
 
 </head>
 <body>
+<!--
+<div id="cssSelector">
+    <div class="line">
+        <div class="square el"></div>
+    </div>
+</div>
+-->
 <div class="headline">
-
-
-        <button class="button"> Bytt "playericon" </button>
+        <button class="button" onclick="byttPlayerIcon()"> Bytt "playericon" </button>
         <p id="highscore" class="tekst"> Highscoren din er 0</p>
         <p id="level" class="tekst">Du er på level 1</p>
+        <p class="tekst"> Ikke la Moxnes ta deg eller sjokolademelken din!</p>
 </div>
 <img src="sjokomelkRedigert1.jpg" id="sjokomelk">
 <img src="bardhoksrud.jpeg" id="firkant">
 <img src="moxnes2Redigert.jpg" id="moxnes">
+
+
 
 
 <script>
@@ -82,15 +99,16 @@
     let x = 1;
     let y = 1;
 
-    let sjokomelkX= Math.floor(Math.random()*1000);
+    let sjokomelkX= 800+(Math.floor(Math.random()*200));
     let sjokomelkY = Math.floor(Math.random()*400);
 
-    let moxnesX = Math.floor(Math.random()*400);
+    let moxnesX = 1000; //Math.floor(Math.random()*400);
     let moxnesY = Math.floor(Math.random()*400);
 
     let moxnesTall = 0; //Variabel som gjør at moxnes ikke beveger seg hver gang funksjonen skjer
+    let vansklighetsgradTall = 0.12;
 
-    let bildeArray = [];
+
 
     moxnes.style.marginLeft= moxnesX + "px";
     moxnes.style.marginTop = moxnesY + "px";
@@ -104,70 +122,118 @@
 
 
     window.onkeydown = function(event){
-
-
         if (x >0) {
-
             if (event.code === "ArrowLeft") {
-                x = x - 2;
-                posisjonMoxnes();
-                sjekkKollisjon();
+                x = x - 5;
             }
-
         }
         if (y>0) {
             if (event.code === "ArrowUp") {
-                y = y - 2;
-                posisjonMoxnes();
-                sjekkKollisjon();
+                y = y - 5;
+            }
+        }
+        if(y<450) {
+            if (event.code === "ArrowDown") {
+                y = y + 5;
+            }
+        }
+        if(x<1000) {
+            if (event.code === "ArrowRight") {
+                x = x + 5;
+
             }
         }
 
-        if (event.code === "ArrowDown") {
-            y = y + 2;
-            posisjonMoxnes();
-            sjekkKollisjon();
-
-        }
-
-        if (event.code === "ArrowRight") {
-            x = x + 2;
+        if( event.code === "ArrowLeft" || event.code === "ArrowUp"||event.code === "ArrowDown" || event.code === "ArrowRight" ) {
+            firkant.style.marginLeft = x + "px"; // firkant sin marginLeft skal være lik verdien av x pluss stringen "px"
+            firkant.style.marginTop = y + "px";
             posisjonMoxnes();
             sjekkKollisjon();
         }
-        console.log("x= " + x); // skriver ut x-koordinaten i konsollen
-        console.log("y= " + y);
-        firkant.style.marginLeft = x + "px"; // firkant sin marginLeft skal være lik verdien av x pluss stringen "px"
-        firkant.style.marginTop = y + "px";
 
     };
 
     function posisjonMoxnes () {
         moxnesTall = moxnesTall + 1;
         if (moxnesTall === 5) {
-            moxnesX = 1000 - x;   //-Math.floor(Math.random()*3)*x;
-            moxnesY = 400- y;     //moxnesY-Math.floor(Math.random()*3)*y;
+            moxnesX = moxnesX - (vansklighetsgradTall*(moxnesX-x)); //-Math.floor(Math.random()*3)+x;
+            moxnesY = moxnesY-(vansklighetsgradTall*(moxnesY-y));//moxnesY-Math.floor(Math.random()*3)+y;
             moxnes.style.marginLeft = moxnesX + "px";
             moxnes.style.marginTop = moxnesY + "px";
 
             moxnesTall = 0;
-
-            console.log("moxnesX er = " + moxnesX);
-            console.log("moxnesY er = " + moxnesY);
         }
     }
 
-    function sjekkKollisjon (){
-        for (let i = 1; i <= 3; i++   ){
-            for (let h = 1; h <= 2; h++){
-                console.log("h er " + h)
-            }
-            console.log ("i er " + i)
+    function sjekkKollisjon () {
+        let hoksrudArray = ["Hoksrud", x, y];
+        let moxnesArray = ["Moxnes", moxnesX, moxnesY];
+        let sjokomelkArray = ["Sjokomelk", sjokomelkX, sjokomelkY];
+        let bildeArray = [hoksrudArray, moxnesArray, sjokomelkArray];
+
+        for (let i = 0; i <= 2; i++) {
+            let a = bildeArray [i];
+            console.log("A = " + a);
+
+            for (let h = 0; h <= 1; h++) {
+                let b = bildeArray[h];
+                if (i !== h) {
+                    console.log("B = " + b);
+                    let vektorMellomBilder = [a[1] - b[1], a[2] - b[2]];
+                    console.log("Vektor mellom bilder = " + vektorMellomBilder);
+
+                    let absMellomBilder = Math.round(Math.sqrt(((vektorMellomBilder[0]) * (vektorMellomBilder[0])) + ((vektorMellomBilder[1]) * (vektorMellomBilder[1]))));
+                    console.log("Abs mellom " + vektorMellomBilder[0] + " og " + vektorMellomBilder[1] + " er " + absMellomBilder)
+
+                    let radiusDifferanse = absMellomBilder - (100/2) - (100/2);
+                    console.log ("Differansen i radius er " + radiusDifferanse);
+
+                    if (radiusDifferanse <= 0) {
+
+                        if (a[0] === "Hoksrud" && b[0] === "Moxnes"){
+                            prompt ("Hoksrud kræsja med Moxnes");
+
+                            return;
+                        }
+                        else if (a[0] === "Sjokomelk" && b[0] === "Hoksrud"){
+                            prompt ("Grattis! Hoksrud fikk sjokolademelken sin!")
+                        }
+
+                      /*  else if (a[0] === "Sjokomelk" && b[0] === "Moxnes"){
+                            prompt("Uffda, da fikk fienden sjokomelken din!")
+                        } */
+                    }
+                }
+           }
         }
 
+    }
+
+    function byttPlayerIcon(){
+        let n =0;
+        let fregatt =["fregatt.jpg","nato.jpg", "tankskip.jpg"];
+        let listhaug = []; //Ikke ferdig
+        let iconArray = [fregatt, listhaug];
+
+        firkant.src = iconArray[n][0];
+        sjokomelk.src= iconArray[n][1];
+        moxnes.src=iconArray[n][2];
+
+        if (n>1) {
+            n++
+        }
+        else ( n=0);
 
     }
+    /*anime({
+        targets: '#cssSelector',
+        translateX: "500%"
+
+    });
+    */
 </script>
+
+
 
 </body>
 </html>

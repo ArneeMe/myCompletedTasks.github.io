@@ -99,14 +99,16 @@
     let x = 1;
     let y = 1;
 
+
     let sjokomelkX= 800+(Math.floor(Math.random()*200));
     let sjokomelkY = Math.floor(Math.random()*400);
 
     let moxnesX = 1000; //Math.floor(Math.random()*400);
     let moxnesY = Math.floor(Math.random()*400);
 
-    let moxnesTall = 0; //Variabel som gjør at moxnes ikke beveger seg hver gang funksjonen skjer
-    let vansklighetsgradTall = 0.12;
+    let level = 1;
+    let vansklighetsgradTall = 1;
+
 
 
 
@@ -154,15 +156,15 @@
     };
 
     function posisjonMoxnes () {
-        moxnesTall = moxnesTall + 1;
-        if (moxnesTall === 5) {
-            moxnesX = moxnesX - (vansklighetsgradTall*(moxnesX-x)); //-Math.floor(Math.random()*3)+x;
-            moxnesY = moxnesY-(vansklighetsgradTall*(moxnesY-y));//moxnesY-Math.floor(Math.random()*3)+y;
+       // moxnesTall = moxnesTall + 1;
+       // if (moxnesTall === 5) {]
+            moxnesX = moxnesX - ((vansklighetsgradTall/100)*(moxnesX-x)); //-Math.floor(Math.random()*3)+x;
+            moxnesY = moxnesY-((vansklighetsgradTall/70)*(moxnesY-y));//moxnesY-Math.floor(Math.random()*3)+y;
             moxnes.style.marginLeft = moxnesX + "px";
             moxnes.style.marginTop = moxnesY + "px";
 
-            moxnesTall = 0;
-        }
+            //moxnesTall = 0;
+
     }
 
     function sjekkKollisjon () {
@@ -191,12 +193,17 @@
                     if (radiusDifferanse <= 0) {
 
                         if (a[0] === "Hoksrud" && b[0] === "Moxnes"){
-                            prompt ("Hoksrud kræsja med Moxnes");
 
-                            return;
+
+
+                            sjekklevel (1)
+
+
                         }
                         else if (a[0] === "Sjokomelk" && b[0] === "Hoksrud"){
-                            prompt ("Grattis! Hoksrud fikk sjokolademelken sin!")
+                           
+                            level++;       
+                            sjekklevel (0);
                         }
 
                       /*  else if (a[0] === "Sjokomelk" && b[0] === "Moxnes"){
@@ -225,12 +232,51 @@
         else ( n=0);
 
     }
-    /*anime({
-        targets: '#cssSelector',
-        translateX: "500%"
 
-    });
-    */
+    function sjekklevel(kollisjon){
+        x = 1;
+        y = 1;
+
+        document.getElementById("level").innerHTML = "Du er på level " + level;
+
+        if (level === 1) {
+            vansklighetsgradTall = vansklighetsgradTall - 0.1;
+
+            moxnesX = 1000;
+            moxnesY = Math.floor(Math.random() * 400);
+        }
+        if (level === 2) {
+            if (kollisjon === 0) {
+                vansklighetsgradTall = 1 + 0.5;
+            }
+
+            moxnesX = 900;
+            moxnesY = Math.floor(Math.random() * 350);
+        }
+        if (level === 3) {
+            if (kollisjon === 0 ) {
+                vansklighetsgradTall = 1 + 0.25;
+            }
+
+            moxnesX = 800;
+            moxnesY = Math.floor(Math.random() * 350);
+        }
+        if (level > 3) {
+            if (kollisjon === 0) {
+                vansklighetsgradTall = 1 + 0.1;
+            }
+
+            moxnesX = 700;
+            moxnesY = Math.floor(Math.random() * 350);
+        }
+
+
+
+
+
+        console.log ("Vansklighetsgradstall = " + vansklighetsgradTall);
+
+    }
 </script>
 
 

@@ -27,7 +27,7 @@ let hoksrud = ["bardhoksrudRedigert1.jpg", "sjokomelkRedigert1.jpg", "moxnes2Red
 let fregatt =["fregattRedigert.jpg","natoRedigert.jpg", "tankskipRedigert.jpg", "Helge Ingstad","Nato", "tankskip Sola", "lightcyan" ];
 let hillary = ["hillary.jpg", "whitehouse.jpg","putin.jpg", "Hillary Clinton","det hvite hus", "Putin", "lightgrey"];
 let iconArray = [hoksrud, fregatt, hillary];
-// Arrayer med flere egenskaper som endres i det du trykker på "bytt player icon" knappen. Enkelt å legge til flere
+// Arrayer med flere egenskaper som endres i det du trykker på "bytt player icon" knappen. Enkelt å legge til flere.
 
 window.onkeydown = function(event){
     if( event.code === "ArrowLeft" || event.code === "ArrowUp"||event.code === "ArrowDown" || event.code === "ArrowRight" ) {

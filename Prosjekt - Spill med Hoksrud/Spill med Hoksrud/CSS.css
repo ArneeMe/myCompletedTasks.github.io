@@ -1,13 +1,5 @@
 body{
     background-color: lightgrey;
-
-}
-#cssSelector{
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    background: black;
-
 }
 #player{
     width: 100px;

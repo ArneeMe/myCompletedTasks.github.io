@@ -1,0 +1,11 @@
+Kommentarer til egen kode:
+Skulle ønske at jeg hadde mer tid.
+Jeg føler at det er et kult prosjekt og at jeg har litt lyst at det skulle bli litt vanskliger/mulig å spille mer en et par ganger.
+Hadde problemer med Photoshop (som du var vitne til i timen) og jeg fikk ikke redusert alle bildene sin oppløsnig.
+Hadde veldig lyst til å endre lydfilene med knappen "bytt playericon" men vi mistet en fagdag og jeg fikk ikke tid.
+Variabelnavnet til Moxnes og sjokolademelk burde vært noe annet,
+men jeg startet på koden før jeg tenkte at jeg skulle ha en knapp som byttet bildene.
+Hvis en beveger seg sakte så ser det ut som kollisjon ikke skjer før det er for sent
+Har ingen while-løkke, men javascripten (spesielt med kollisjon-funksjonen) tror jeg er mer enn nok kompleks.
+Tallene, som hvor fort player eller moxnes beveger kan godt vært jobbet mer med for å sørge for morsomts mulig spill
+Lyden burde "fade" ut

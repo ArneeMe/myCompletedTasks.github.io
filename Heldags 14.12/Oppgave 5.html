@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Oppgave 5</title>
+    <link rel="stylesheet" href="Oppgave%205%20style.css">
+</head>
+<body>
+<div class="iconBildeogTekst">
+
+        <img src="fredag/bilder/miljopartiet.png" id="mdgIcon" class="icon mdgIcon">
+        <img src="fredag/bilder/sp.png" id="spIcon" class="icon spIcon">
+
+<div class="tekst" id="tekstBorder">
+    <p id="mdgNavn"> Her er to partier fra stortinget, her ligger det bilder og litt info.</p>
+    <p id="spNavn">Hold musen over logoene for å se info!</p>
+
+    <p id="mdgRepresentant"></p>
+    <p id="spRepresentant"></p>
+
+    <p id="mdgSlagord"></p>
+    <p id="spSlagord"></p>
+</div>
+</div>
+
+<div class="slideShow">
+<button class="button buttonMDG" id="buttonMDG" onclick="buttonMDG()">Se bilder fra MDG</button>
+<button class="button buttonSP" id="buttonSP" onclick="buttonSP()">Se bilder fra SP</button>
+<br>
+<img id="bildeSrc" src="fredag/bilder/mdg01Redigert.jpg" class="bilde">
+<br>
+<button class="button" id="forrigeBilde" onclick="forrigeBilde()">Sist bilde</button>
+<button class="button" id="nesteBilde" onclick="nesteBilde()">Neste bilde</button>
+</div>
+
+
+<script src="Oppgave5JS.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilfeldig person i berg- og dal bane</title>
+</head>
+<body>
+<button id="button" onclick="tilfeldigPerson()">Ny tilfeldig person</button>
+<br>
+<p id="tekst"></p>
+<br>
+<img id="bilde">
+
+<script>
+    let tekst = document.getElementById("tekst");
+    let bilde = document.getElementById("bilde");
+    let tilfeldigalder;
+
+
+    function tilfeldigPerson (){
+        tilfeldigalder = Math.floor(Math.random()*70)+1;
+        if (tilfeldigalder<15) {
+            tekst.innerHTML = tilfeldigalder + " år! Ikke for smårollinger, minst 15 år!";
+            bilde.src = "fredag/bilder/ung.jpg"
+
+        }
+        else if (tilfeldigalder>60) {
+            tekst.innerHTML = tilfeldigalder + " år! Ikke for gamlinger, maks 60 år!";
+            bilde.src = "fredag/bilder/gammel.jpg"
+        }
+        else {
+            tekst.innerHTML = tilfeldigalder + " år! Gratulerer, du er akkuratt passe gammel!";
+            bilde.src = "fredag/bilder/passe.jpg";
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

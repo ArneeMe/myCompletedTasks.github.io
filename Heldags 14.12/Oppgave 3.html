@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 3</title>
+</head>
+<body>
+<input type="number" id="input" placeholder="Skriv inn pris her">
+<button id="button">Trykk her for å regne ut pris med moms</button>
+<p id="resultat"></p>
+
+<script>
+    let input = document.getElementById("input");
+    let button = document.getElementById("button");
+    let resultat = document.getElementById("resultat");
+    let output;
+
+
+    button.onclick = function () { //funksjon som kjører når bruker trykker på button
+
+        if (Number(input.value) >= 350) { //sjekker verdien og utfører matten
+            output = (Number(input.value) * 1.25) + 158;
+            resultat.innerHTML = "Prisen med moms er " + output + "kr";
+        }
+        else if (Number(input.value) < 350) {
+            output = Number(input.value);
+            resultat.innerHTML="Prisen er fortsatt " + output + "kr fordi det er ingen momsutgift her.";
+        }
+    }
+
+</script>
+</body>
+</html>

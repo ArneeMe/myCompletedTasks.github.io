@@ -1,0 +1,50 @@
+.iconBildeogTekst{
+    display: flex;
+    margin-top: 20px;
+
+}
+.icon{
+    margin-right: 10px;
+    transition: 0.7s;
+}
+.mdgIcon{
+    border: 5px solid #67962e;
+    border-radius: 45%;
+}
+.spIcon{
+    border: 5px solid #008542;
+    border-radius: 45%;
+}
+.tekst{
+    font-size: 25px;
+    font-family: "Times New Roman", Times, serif;
+    transition: 0s;
+    border-radius: 2%;
+
+}
+.slideShow{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.bilde{
+    margin-top: 5px;
+
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 148px   ;
+    cursor: pointer;
+}
+.buttonMDG{
+    background-color:#67962e;
+}
+.buttonSP{
+    background-color: #008542;
+}

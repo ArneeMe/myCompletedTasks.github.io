@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 6</title>
+</head>
+<body>
+<input id="input">
+<button onclick="leggTil()">Legg til i liste</button>
+
+
+<select id="select">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+</select>
+<script>
+    let input = document.querySelector("#input");
+    let select = document.querySelector("#select");
+    let array = [];
+
+    select.onchange = function () {
+        array.push(select.value);
+    };
+    function leggTil() {
+        array.push(input.value)
+    }
+
+
+</script>
+
+</body>
+</html>

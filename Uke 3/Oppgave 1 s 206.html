@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave s 206 </title>
+</head>
+<body>
+
+    <script>
+        //Oppgave 1)
+        let matvarer = ["ost", "paprika", "brød", "kaviar"];
+        matvarer.unshift("potet");
+        matvarer.pop();
+        matvarer.splice(1,1,"potetgull");
+
+        //Oppgave 2)
+
+        let tre = ["lønn", "hassel", "bjørk" ,"eik", "blodlønn","furu","gran"];
+        tre.splice(3,1);
+        tre.splice(2,1, "hengebjørk");
+        tre.splice(4,2);
+        tre.splice(4,0,"fjellbjørk", "dvergbjørk");
+        tre.sort();
+
+        //Oppgave 3 og 4)
+    </script>
+    <button onclick="neste()">Neste</button>
+    <button onclick="forrige()">Forrige</button>
+    <br>
+    <img id="bilde">
+    <script>
+
+        let feriebilder =["sjokomelkRedigert.jpg","BardhoksrudRedigert.jpg","moxnesRedigert.jpg"];
+        let bilde = document.querySelector("#bilde");
+        let i = 0;
+
+        console.log(feriebilder);
+
+        function sammenlign(a,b) {
+            a=a.toUpperCase();
+            b=b.toUpperCase();
+            if (a<=b){
+                return  -1;
+            }
+        }
+        feriebilder.sort(sammenlign);
+        console.log(feriebilder);
+
+        function neste() {
+            i++;
+            bilde.src = feriebilder[i];
+        }
+        function forrige() {
+            i--;
+            bilde.src = feriebilder[i];
+        }
+
+        //Oppgave 5
+
+        let tallListe = [2, 20, 18, 4, 8];
+        tallListe.sort(function (a,b) {return a-b});
+        console.log(tallListe);
+    </script>
+</body>
+</html>

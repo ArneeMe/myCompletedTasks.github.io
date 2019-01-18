@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgaver s210</title>
+</head>
+<body>
+<ul id="ol"></ul> <!-- Enten <ul> eller <ol> -->
+<script>
+    let liste = document.querySelector("#ol");
+    /* Oppgave 1)
+    let matvarer = ["ost", "paprika", "brød", "kaviar"];
+    for (let varer of matvarer){
+        liste.innerHTML += `<li>${varer}</li>`
+    }
+    */
+     // Oppgave 2
+
+    /*
+    let boker = ["Hei", "på", "deg", "din", "potet"];
+
+    function sorter(string1,string2) {
+        string1 = string1.toLowerCase();
+        string2 = string2.toLowerCase();
+        if(string1<=string2){
+            return -1;
+        }
+    }
+    boker.sort(sorter);
+
+    for (let bok of boker){
+        liste.innerHTML +=`<li>${bok}</li>`;
+    }
+
+    */
+
+    //Oppgave 3:
+
+    /*
+    let antallDager =0;
+    let gjennomsnitttall= 0;
+    let temperatur = [3,4,5,6,5,5,6,4,4,5];
+    temperatur.sort();
+    for (let varmegrader of temperatur){
+        console.log(varmegrader);
+            liste.innerHTML += `<li>${varmegrader}</li>`;
+        if (varmegrader < 5){
+            antallDager++
+        }
+        gjennomsnitttall = gjennomsnitttall + varmegrader;
+
+
+    }
+    let gjennomsnittTemperatur = gjennomsnitttall/temperatur.length
+    console.log("Gjennomsnittstemperatur er = " + gjennomsnittTemperatur);
+    console.log("Antall dager kaldere enn 5 grader = " +antallDager + " dager")
+    */
+
+    //Oppgave 4:
+
+    let personer =[
+        {navn: "Arne", alder: 18},
+        {navn: "Per", alder: 200},
+        {navn: "Askeladden", alder:9},
+        {navn: "Per", alder: 42},
+    ];
+    let array = [];
+    for (let person of personer){
+        array.push([person.navn,Number(person.alder)]);
+    }
+    console.log("Arrayen er = " + array);
+    array.sort(function (a,b){return a[1]-b[1]});
+
+    for(let i=0; i< array.length; i++){
+        liste.innerHTML += `<li> ${array[i][0]} er ${array[i][1]} år gammel</li>`;
+    }
+    console.log("Etter sortering = "+ array);
+
+
+
+
+</script>
+</body>
+</html>

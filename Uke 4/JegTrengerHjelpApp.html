@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeg trenger hjelp!</title>
+    <style>
+        li:hover{
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+<h1> Jeg trenger hjelp!</h1>
+<input id="navn" type="text" placeholder="Navnet ditt">
+<input id="problem" type="text" placeholder="Problemet ditt">
+<button onclick="sendInn()" >Send inn</button>
+<br>
+<p> Andre som trenger hjelp:</p>
+<ol id="liste">
+
+</ol>
+
+<script>
+    let navn = document.querySelector("#navn");
+    let problem  = document.querySelector("#problem");
+    let liste  = document.querySelector("#liste");
+    let problemer = [];
+    let tid = new Date();
+    let x =1;
+
+    function sendInn() {
+        if (navn.value !== "" && problem.value !== "") {
+            capitalize(navn.value);
+            tid = new Date();
+            let klokkeslett = tid.getHours() + ":" + tid.getMinutes();
+            let maaned = tid.getMonth() + 1;
+            let dato = tid.getDay() + "." + maaned;
+            let person = [navn.value, problem.value, klokkeslett, maaned];
+            problemer.push(person);
+            /*liste.innerHTML = "";
+            for (let i = 0; i< problemer.length; i++) {
+                     console.log("i er = " + i);
+                     liste.innerHTML += `<li>${problemer[i][0]} trenger hjelp med ${problemer[i][1]}, klokken ${problemer[i][2]} den ${dato}</li>`;
+                     listepunkt = document.querySelectorAll("li");
+                     console.log(listepunkt)
+            }
+            */
+
+            let li = document.createElement("li");
+            for (let i = 0; i< problemer.length; i++) {
+                li.innerHTML = `${problemer[i][0]} trenger hjelp med ${problemer[i][1]}, klokken ${problemer[i][2]} den ${dato}`;    //inserting text into newly created <li> element
+            }
+            li.onclick = function() {
+                this.parentNode.removeChild(this);
+            };
+            liste.appendChild(li)
+
+            let opp = document.createElement("p");
+            let ned = document.createElement("p");
+            opp.innerHTML = `&uarr; ${x}`;
+            ned.innerHTML = `&darr;  ${x}`;
+            opp.onclick = function (){
+                liste.insertBefore(li, liste.firstChild)
+            };
+            ned.onclick = function (){
+                liste.insertBefore(li, liste.lastChild)
+            };
+            document.body.appendChild(opp);
+            document.body.appendChild(ned);
+            x++
+
+
+           // liste.insertBefore(li, liste.firstChild);
+
+            /* if (liste.childElementCount == 0) {  //using if/else statement to add items to top of list
+                liste.appendChild(li);       // will add if count of ul children is 0 otherwise add before first item
+           }
+            else {
+                liste.insertBefore(li, liste.firstChild);
+            };*/
+
+        }
+        else {
+            console.log("Vennligst sjekk om alt er riktig skrevet");
+        }
+    }
+        function capitalize (s) {
+            if (typeof s !== 'string') {
+                console.log("Vennligst sjekk om alt er riktig skrevet")
+            }
+            navn.value = s.charAt(0).toUpperCase() + s.slice(1)
+        }
+
+</script>
+
+
+
+
+</body>
+</html>

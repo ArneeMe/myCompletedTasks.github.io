@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>s222</title>
+    <style>
+        body{
+            height: 100%;
+            background-color: black;
+        }
+        .stjerne {
+            position: absolute;
+            background-color: yellow;
+            border-radius: 50%;
+            transition: 10s;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    for (let i = 0; i<20000;i++){
+      let stjerne = document.createElement("div");
+      stjerne.className = "stjerne";
+        stjerne.style.width = Math.random() * 3 + "px";
+      document.body.appendChild(stjerne);
+    }
+    var stjerner = document.getElementsByClassName("stjerne");
+    stjerner = Array.from(stjerner);
+    function scramble(){
+        for (var stjerne of stjerner) {
+            stjerne.style.left = (Math.random() * innerWidth - 20) + "px";
+            stjerne.style.top = Math.random() * innerHeight - 20 + "px";
+
+            stjerne.style.height = stjerne.style.width;
+        }
+    }
+    scramble();
+    setInterval(scramble, (7*1000));
+</script>
+</body>
+</html>

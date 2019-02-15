@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 2</title>
+</head>
+<body>
+<p>Oppgi en fart i meter per sekund, trykk så på "regn ut" og du får opp hvor mange watt som produseres</p>
+<p> Farten du oppgir må være mellom 2.5 og 15 m/s grunnet egenskapene til vindmøller</p>
+<input id="fart" type="number">
+<button onclick="regnUt()">Regn ut</button>
+<br>
+<p id="svar"></p>
+<script>
+    let fart = document.querySelector("#fart");
+    let svarTekst =document.querySelector("#svar");
+    let watt;
+
+    function regnUt() { //Funksjon som først sjekker om bruker har puttet inn gyldig tall,
+        // så sjekker om tallet er over eller 10 for å bruke riktig formel
+        if (fart.value > 2.5 && fart.value < 15){
+            if (fart.value <=10){
+                watt = 8*fart.value;
+            }
+            if (fart.value >10){
+                watt = 14*fart.value;
+            }
+        }
+        else{
+            svarTekst.innerHTML = `Vennligst kontroller at du har skrevet inn et tall mellom 2.5 og 15`
+            return;
+
+        }
+        svarTekst.innerHTML = `Hvis farten er ${fart.value} m/s så får du ${watt} watt per time`
+        //Svar teksten oppdateres slik at bruker for tydlig tekst svar med de riktige verdiene.
+    }
+
+
+</script>
+
+</body>
+</html>

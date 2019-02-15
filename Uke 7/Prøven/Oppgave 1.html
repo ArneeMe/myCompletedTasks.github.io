@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+
+    <style>
+        #dyr{
+            width: 115px;
+            height: 115px;
+            background-image: url("vedlegg/dyr.png");
+        }
+    </style>
+</head>
+<body>
+<div id="dyr"></div>
+
+<script>
+    let dyr = document.querySelector("#dyr");
+    let dyrCSS = [
+        {backgroundPosition:"0 0"},
+        {backgroundPosition:"-460px 0"}
+    ]; //Hva skal endres i div-en? Jo det er at bilde skal flytte på seg.
+
+    let dyrEgenskaper = {
+        duration: 500,
+        iterations: Infinity,
+        easing:"steps(4)",
+    };
+    let dyrAnimasjon = dyr.animate(dyrCSS,dyrEgenskaper);
+
+</script>
+</body>
+</html>

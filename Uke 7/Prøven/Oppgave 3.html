@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 3</title>
+
+    <style>
+        body{
+            background-color: lightblue;
+        }
+
+        button {
+            background-color: black;
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 3%;
+        }
+        #rotor{
+            position: absolute;
+            width: 200px;
+            left: 500px;
+            transition: 2s;
+        }
+        #stolpe{
+            position: absolute;
+            background-color: white;
+            width: 20px;
+            height: 375px;
+            left: 590px;
+            top: 230px;
+        }
+        #tre{
+            position: absolute;
+            height: 250px;
+            top:350px;
+            left: 300px
+        }
+        #blad{
+            position: absolute;
+            width: 10px;
+            top: 570px;
+        }
+        #bakke{
+            position: absolute;
+            background-color: #00D672;
+            top:600px;
+            width: 100%;
+            height: 100px;
+            margin-left: -10px;
+        }
+
+        #sol{
+            position: absolute;
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            left: 1000px;
+            margin-top: -70px;
+        }
+
+    </style>
+    <!-- Generelle kommentarer om style:
+        Mye små justeringer. Legger til bakke og sol fordi det kan se litt penere ut.
+        Vanskelig at rotoren roterer riktig grunnet egenskapene til bildet.
+        Treet var jeg også litt usikker på hva jeg skulle gjøre med, men jeg fulgte tips nr3.
+        Bladene animerte jeg langs bakken for en vindlig effekt.
+     -->
+
+</head>
+<body>
+<button id="button1" onclick="stille()">Stille</button>
+<button id="button2" onclick="lettBris()">Lett bris</button>
+<button id="button3" onclick="stivKuling()">Stiv Kuling</button>
+<p id="tekst"> Det er nå stille, 0 m/s</p>
+<div id="stolpe"></div>
+<div id="bakke"></div>
+<div id="sol"></div>
+<img src="vedlegg/rotere.png" id="rotor" alt="roterende bilde av rotor">
+<img src="vedlegg/Bjork.png" id="tre" alt="Et tre">
+<img src="vedlegg/blad.png"  id="blad" alt="Et blad">
+
+    <script>
+        const tekst = document.querySelector("#tekst");
+        const rotor = document.querySelector("#rotor");
+        const blad  = document.querySelector("#blad");
+
+        let rotorCSS = [
+            {
+                transform: "rotate(0deg)"
+            },
+            {
+                transform: "rotate(-360deg)"
+            }
+        ];
+
+        let  rotorAnimasjon = rotor.animate(rotorCSS,{duration:3000, iterations:Infinity});
+        rotorAnimasjon.playbackRate = 0;
+
+        let treCSS = [
+            {
+                transform: "rotate(0deg)"
+            },
+            {
+                transform: "rotate(5deg)"
+            }
+        ];
+        let treAnimasjon = tre.animate (treCSS, {duration: 3000, iterations:Infinity, direction:"alternate"});
+        treAnimasjon.playbackRate = 0;
+
+        let bladCSS =[
+            {
+                left: "1px",
+                transform: "rotate(0deg)"
+            },
+            {
+                left: "1200px",
+                transform: "rotate(720deg)"
+            }
+        ];
+        let bladAnimasjon = blad.animate (bladCSS,{duration:3000, iterations:Infinity});
+        bladAnimasjon.playbackRate = 0;
+
+        function stille() {
+            rotorAnimasjon.playbackRate = 0;
+            treAnimasjon.playbackRate = 0;
+            bladAnimasjon.playbackRate = 0;
+            tekst.innerHTML = `Det er nå stille, 0 m/s`
+        }
+
+        function lettBris() {
+            rotorAnimasjon.playbackRate = 1;
+            treAnimasjon.playbackRate = 1;
+            bladAnimasjon.playbackRate = 1;
+            tekst.innerHTML = `Det er nå lett bris, ca 4 m/s`
+        }
+        function stivKuling() {
+            rotorAnimasjon.playbackRate = 4;
+            treAnimasjon.playbackRate = 4;
+            bladAnimasjon.playbackRate = 4;
+            tekst.innerHTML = `Det er nå stiv kuling, ca 15 m/s`
+        }
+
+    </script>
+</body>
+</html>

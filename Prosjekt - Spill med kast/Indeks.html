@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Avfyr kanon!</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
+</head>
+<body>
+<div class="container">
+    <input id="hoyde" type="number" placeholder="Høyde (under 400!)">
+    <input class="slider" id="vinkel" type="range" min="0" max= "90" placeholder="Vinkel">
+
+    <button id="avfyr" onclick="avfyr()" >Avfyr kanonen!</button>
+    <button id="pause" onclick="pause()">Pause</button>
+    <button id="reset" onclick="reset()">Reset</button>
+    <p id="tekstXpos">X-posisjon er </p>
+    <p id="tekstYpos">Y-posisjon er </p>
+</div>
+<div class="tekstContainer">
+<p id="tekstHoyde">Høyden er 0 </p>
+<p id="tekstVinkel">Vinkelen er 45 grader</p>
+</div>
+<img src="bilder/kule.png" id="kule" class="kule">
+<img src="bilder/kanonFirstFrame.png" id="kanon">
+<img src="bilder/target.png" id="blink">
+
+
+
+<script src="Javascript.js"></script>
+
+</body>
+</html>

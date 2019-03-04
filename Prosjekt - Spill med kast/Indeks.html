@@ -8,17 +8,17 @@
 </head>
 <body>
 <div class="container">
-    <input id="hoyde" type="number" placeholder="Høyde (under 400!)">
+    <input class="slider" id="hoyde" type="range" min="0" max="399" defaultValue="0" placeholder="Høyde (under 400!)">
     <input class="slider" id="vinkel" type="range" min="0" max= "90" placeholder="Vinkel">
 
     <button id="avfyr" onclick="avfyr()" >Avfyr kanonen!</button>
     <button id="pause" onclick="pause()">Pause</button>
     <button id="reset" onclick="reset()">Reset</button>
-    <p id="tekstXpos">X-posisjon er </p>
-    <p id="tekstYpos">Y-posisjon er </p>
+    <p id="tekstXpos">X-posisjon er 20</p>
+    <p id="tekstYpos">Y-posisjon er 400</p>
 </div>
 <div class="tekstContainer">
-<p id="tekstHoyde">Høyden er 0 </p>
+<p id="tekstHoyde">Starthøyden er 0 </p>
 <p id="tekstVinkel">Vinkelen er 45 grader</p>
 </div>
 <img src="bilder/kule.png" id="kule" class="kule">

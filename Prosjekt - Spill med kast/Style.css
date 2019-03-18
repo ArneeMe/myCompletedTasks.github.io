@@ -64,3 +64,11 @@
     background: #4CAF50;
     cursor: pointer;
 }
+.fiende{
+    position: absolute;
+    border-radius: 50%;
+
+}
+#stjerne1{
+    cursor: pointer;
+}

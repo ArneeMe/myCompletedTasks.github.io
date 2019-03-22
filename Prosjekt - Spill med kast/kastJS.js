@@ -10,6 +10,8 @@ const tekstHoyde = document.querySelector("#tekstHoyde");
 const tekstFart = document.querySelector("#tekstFart");
 const tekstXpos = document.querySelector("#tekstXpos");
 const tekstYpos = document.querySelector("#tekstYpos");
+const tekstSeier = document.querySelector("#tekstSeier");
+const tekstTilbakemelding = document.querySelector("#tekstTilbakemelding");
 const fiendeParent = document.querySelector("#fiendeParent");
 hoydeInp.value = 0; //Slik at starthøyden er 0;
 vinkelInp.value = 45;
@@ -26,13 +28,14 @@ let tyngdekraft = 0.1;
 let teller  = 0; //Teller i sammenheng med tyngdekraft "tiden"
 let antallSeier = 0;
 let antallFiender = 0;
-let kuleY = vinduHoyde-250;
+let kuleY = vinduHoyde-150;
 let kuleX = 20;
 let blinkX = (Math.random()*300)+(vinduBredde-420);
-let blinkY= Math.random()*(vinduHoyde-200);
+let blinkY = (Math.random()*(vinduHoyde-420))+200;
 let kuleYtekst;
 let fiende;
 let fiendeArray = [];
+let minsteAvstandArray= [];
 kule.style.marginTop= kuleY + "px";
 kule.style.marginLeft= kuleX + "px";
 kanon.style.marginTop =  (kuleY-70) + "px";
@@ -89,7 +92,7 @@ function leggTilTid() {
 function avfyr() {
     kollisjon = false;
     nullstill = false;
-    tomArray= [];
+    minsteAvstandArray= [];
     if (startet === false) {
         startet = true; //Sjekker om den allerede har startet, hvis ikke starter den det og sier at startet = true
         kanon.src = "bilder/kanon.gif"; //Bytter fra bilde til gif
@@ -117,7 +120,7 @@ function skudd () {
 function byttBilde () {
     kanon.src = "bilder/kanonFirstFrame.png"
 }
-let tomArray= [];
+
 function regnUtKollisjon() {
     let kuleArray = ["kule", kuleX, kuleY];
     let blinkArray = ["blink", blinkX, blinkY];
@@ -152,21 +155,23 @@ function regnUtKollisjon() {
      //   console.log(vektorBlinkFiende);
         let absMellomBilder2 = Math.round(Math.sqrt(((vektorBlinkFiende[0]) * (vektorBlinkFiende[0])) + ((vektorBlinkFiende[1]) * (vektorBlinkFiende[1]))));
        //console.log("Abs er " + absMellomBilder2);
-        tomArray.push(absMellomBilder2);
-       console.log("Kule x,y er "+ Math.round(kuleX) +"," +Math.round(kuleY) + ". Fienden er ved " + Math.round(fiendeX)+ "," + Math.round(fiendeY) + ". Abs er da "+ absMellomBilder2)
-        if (absMellomBilder2 <= 5){
+        minsteAvstandArray.push(absMellomBilder2);
+      // console.log("Kule x,y er "+ Math.round(kuleX) +"," +Math.round(kuleY) + ". Fienden er ved " + Math.round(fiendeX)+ "," + Math.round(fiendeY) + ". Abs er da "+ absMellomBilder2)
+        if (absMellomBilder2 <= 10){
             console.log("Du traff fienden");
             kollisjon = true;
             seier = false;
             reset();
         }
     }
-    tomArray.sort(function(a, b){return a - b});
-    console.log(tomArray[0])
+
+    minsteAvstandArray.sort(function(a, b){return a - b});
+    console.log(minsteAvstandArray[0])
+
 }
 
 function nyttSkudd() {
-    kuleY = vinduHoyde-250;
+    kuleY = vinduHoyde-150;
     kuleY = kuleY - hoydeInp.value;
     kuleX = 20;
     teller = 0;
@@ -183,7 +188,7 @@ function nyttSkudd() {
 }
 
 function reset() {
-    kuleY = vinduHoyde-500;
+    kuleY = vinduHoyde-150;
     kuleX = 20;
     teller = 0;
     fart  = 0;
@@ -210,17 +215,23 @@ function oppdaterTekst(){
     tekstYpos.innerHTML = `Y-posisjon er ${kuleYtekst.toFixed(0)}`;
     tekstHoyde.innerHTML = `Starthøyden er ${hoydeInp.value}`;
     tekstVinkel.innerHTML = `Vinkelen er ${vinkel} grader`;
+    tekstSeier.innerHTML = `Antall treff: ${antallSeier}`;
+
+
+    if(minsteAvstandArray[0] < 15){
+        console.log("Det var nære på!");
+    }
 }
 
 function oppdaterBlink(){
     blinkX = (Math.random()*300)+(vinduBredde-420);
-    blinkY= Math.random()*(vinduHoyde-200);
+    blinkY= (Math.random()*(vinduHoyde-420))+200;
     blink.style.marginTop= blinkY + "px";
     blink.style.marginLeft= blinkX + "px";
 }
 hoydeInp.onchange  = function () {
-    if(hoydeInp.value < (vinduHoyde-250) && startet===false) {
-        kuleY = vinduHoyde-250;
+    if(hoydeInp.value < (vinduHoyde-150) && startet===false) {
+        kuleY = vinduHoyde-150;
         kuleY = kuleY - hoydeInp.value;
         kule.style.marginTop = kuleY + "px";
         kanon.style.marginTop = (kuleY-70)  + "px";
@@ -269,13 +280,14 @@ function leggTilFiende() {
     fiende.className = "fiende";
     fiende.style.position= "absolute";
     //fiende.i = "stjerne1";
-    let fiendeStartX = (Math.random()*(vinduBredde-200))+200;
+    let fiendeStartX = (Math.random()*(vinduBredde-200))+100;
     let fiendeStartY =  (Math.random()*500)+(vinduHoyde-600);
     fiende.style.marginLeft = fiendeStartX + "px";
     fiende.style.marginTop =  fiendeStartY + "px";
     fiende.src = "bilder/sortHull2.jpg";
     fiende.style.width = (10) + "px";
     fiende.style.height = (10)+ "px";
+    fiende.style.transform = "translate(-50%, -50%)";
     fiendeParent.appendChild(fiende);
     let fiendeKordinatArray = [fiende.id,fiendeStartX, fiendeStartY];
     fiendeArray.push(fiendeKordinatArray);

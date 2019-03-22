@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hold inne space</title>
+</head>
+<body>
+<p>Sjekk konsoll</p>
+<script>
+    let fartTid = 0;
+    let interval;
+    document.onkeydown = function() {
+       interval = setInterval(leggTilTid(),1000);
+    };
+
+    document.onkeyup = function () {
+        clearInterval(interval);
+        console.log("Slutt tiden ble "+fartTid)
+        fartTid=0;
+    };
+
+
+   function leggTilTid(){
+        fartTid++;
+       console.log(fartTid);
+   }
+</script>
+</body>
+</html>

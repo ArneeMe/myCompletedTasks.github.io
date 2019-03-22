@@ -17,8 +17,6 @@ hoydeInp.value = 0; //Slik at starthøyden er 0;
 vinkelInp.value = 45;
 fartInp.value = 0;
 
-let vinduHoyde = window.innerHeight;
-let vinduBredde = window.innerWidth;
 let fart = 0;
 let stigning = "positiv";
 let vinkel = 45;
@@ -28,10 +26,10 @@ let tyngdekraft = 0.1;
 let teller  = 0; //Teller i sammenheng med tyngdekraft "tiden"
 let antallSeier = 0;
 let antallFiender = 0;
-let kuleY = vinduHoyde-150;
+let kuleY = 500;
 let kuleX = 20;
-let blinkX = (Math.random()*300)+(vinduBredde-420);
-let blinkY = (Math.random()*(vinduHoyde-420))+200;
+let blinkX = (Math.random()*300)+420;
+let blinkY = (Math.random()*(420))+80;
 let kuleYtekst;
 let fiende;
 let fiendeArray = [];
@@ -139,7 +137,7 @@ function regnUtKollisjon() {
         oppdaterBlink();
         nyttSkudd();
     }
-    else if (kuleX > vinduBredde || kuleX<0 || kuleY > (vinduHoyde-150) || kuleY <-300)  {
+    else if (kuleX > 800  || kuleX<0 || kuleY > 500 || kuleY <-300)  {
         console.log("Du bomma! Prøv igjen");
         kollisjon = true;
         seier = false;
@@ -171,7 +169,7 @@ function regnUtKollisjon() {
 }
 
 function nyttSkudd() {
-    kuleY = vinduHoyde-150;
+    kuleY = 500;
     kuleY = kuleY - hoydeInp.value;
     kuleX = 20;
     teller = 0;
@@ -188,7 +186,7 @@ function nyttSkudd() {
 }
 
 function reset() {
-    kuleY = vinduHoyde-150;
+    kuleY = 500;
     kuleX = 20;
     teller = 0;
     fart  = 0;
@@ -224,14 +222,14 @@ function oppdaterTekst(){
 }
 
 function oppdaterBlink(){
-    blinkX = (Math.random()*300)+(vinduBredde-420);
-    blinkY= (Math.random()*(vinduHoyde-420))+200;
+    blinkX = (Math.random()*300)+ 420;
+    blinkY= ((Math.random()*420))+80;
     blink.style.marginTop= blinkY + "px";
     blink.style.marginLeft= blinkX + "px";
 }
 hoydeInp.onchange  = function () {
-    if(hoydeInp.value < (vinduHoyde-150) && startet===false) {
-        kuleY = vinduHoyde-150;
+    if(hoydeInp.value < (500) && startet===false) {
+        kuleY = 500;
         kuleY = kuleY - hoydeInp.value;
         kule.style.marginTop = kuleY + "px";
         kanon.style.marginTop = (kuleY-70)  + "px";
@@ -280,8 +278,8 @@ function leggTilFiende() {
     fiende.className = "fiende";
     fiende.style.position= "absolute";
     //fiende.i = "stjerne1";
-    let fiendeStartX = (Math.random()*(vinduBredde-200))+100;
-    let fiendeStartY =  (Math.random()*500)+(vinduHoyde-600);
+    let fiendeStartX = (Math.random()*(700))+100;
+    let fiendeStartY =  (Math.random()*300)+200;
     fiende.style.marginLeft = fiendeStartX + "px";
     fiende.style.marginTop =  fiendeStartY + "px";
     fiende.src = "bilder/sortHull2.jpg";

@@ -1,12 +1,9 @@
 body{
     margin: 0;
 }
-
 #fiendeParent {
     position: absolute;
     top: 0;
-}
-.fiende{
 }
 
 .container{
@@ -80,24 +77,17 @@ body{
 
 #tekstHoyde{
     text-align: center;
-
 }
 
 #tekstVinkel{
     text-align: center;
-
 }
 #tekstTilbakemelding{
     height: 0;
-
 }
 #tekstTips{
     margin-top: 5px;
 }
-#tekstFart{
-
-}
-
 .tekstContainer{
 
 }
@@ -112,7 +102,6 @@ body{
     top: 0;
     transform: translate(-50%, -50%)
 }
-
 #kanon{
     width: 100px;
     margin-left: 0;
@@ -121,7 +110,6 @@ body{
     position: absolute;
     transform-origin: bottom left;
 }
-
 #blink{
     width: 60px;
     height: 60px;
@@ -131,19 +119,14 @@ body{
     border-radius: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-
 }
-
-
 #fart{
     margin-top: 450px;
     width: 300px;
-
 }
 #fart::-webkit-slider-thumb{
     background-color: red;
 }
-
 /* Hentet fra w3 schools. Hadde ingen effekt på min google chrome, men kan hende at det trengs til andre internetttyper(?)
 .slider::-moz-range-thumb {
     width: 25px;

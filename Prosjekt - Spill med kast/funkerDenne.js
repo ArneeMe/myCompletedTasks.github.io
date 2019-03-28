@@ -12,12 +12,10 @@ const tekstXpos = document.querySelector("#tekstXpos");
 const tekstYpos = document.querySelector("#tekstYpos");
 const tekstSeier = document.querySelector("#tekstSeier");
 const tekstTilbakemelding = document.querySelector("#tekstTilbakemelding");
-const tekstTips = document.querySelector("#tekstTips");
 const fiendeParent = document.querySelector("#fiendeParent");
 hoydeInp.value = 0; //Slik at starthøyden er 0;
 vinkelInp.value = 45;
 fartInp.value = 0;
-const tipsArray = ["Spillet fungerer dårlig hvis du scroller vinduet, zoom heller ut", "Husk å endre vinkel for å treffe akkuratt", "Starthøyde kan være lurt å variere","En fiende -eller et svart hull - restarter spillet", "Du kan endre tyngdkraften i rullevinduet øverst","Det legges til en fiende hver gang du treffer blinken", "Bruk knappene nederst til å endre antallet fiender", "Bruk de ulike tyngdekreftene til din fordel!"];
 
 let fart = 0;
 let stigning = "positiv";
@@ -30,13 +28,12 @@ let antallSeier = 0;
 let antallFiender = 0;
 let kuleY = 500;
 let kuleX = 20;
-let blinkX = (Math.random()*420)+600;
+let blinkX = (Math.random()*300)+420;
 let blinkY = (Math.random()*(420))+80;
 let kuleYtekst;
 let fiende;
 let fiendeArray = [];
 let minsteAvstandArray= [];
-let tilfeldigTall = 1;
 kule.style.marginTop= kuleY + "px";
 kule.style.marginLeft= kuleX + "px";
 kanon.style.marginTop =  (kuleY-70) + "px";
@@ -73,6 +70,7 @@ document.onkeyup = function () {
         fart = 0;
     }
 };
+
 function leggTilTid() {
     if (stigning === "positiv") {
         fart = fart + 1;
@@ -86,16 +84,16 @@ function leggTilTid() {
         }
     }
     fartInp.value = fart;
-    tekstFart.innerHTML = `Utskytningsfarten er ${fart}`;
+    tekstFart.innerHTML = `Utskytningsfarten er ${fart}`
+
 }
 function avfyr() {
     kollisjon = false;
     nullstill = false;
     minsteAvstandArray= [];
-    console.log("Fart er " + fart + "");
-    kanon.src = "bilder/kanon.gif"; //Bytter fra bilde til gif
     if (startet === false) {
         startet = true; //Sjekker om den allerede har startet, hvis ikke starter den det og sier at startet = true
+        kanon.src = "bilder/kanon.gif"; //Bytter fra bilde til gif
         setTimeout(skudd, 420); //delay slik at det passer med animasjonen
     }
 }
@@ -106,7 +104,7 @@ function skudd () {
         kuleY = kuleY - (fartY - tyngdekraft * teller);
         kule.style.marginTop = kuleY + "px";
         kule.style.marginLeft = kuleX + "px";
-        kuleYtekst = 500 - kuleY;
+        kuleYtekst = 400 - kuleY;
         tekstXpos.innerHTML = `X-posisjon er ${kuleX.toFixed(0)}`;
         tekstYpos.innerHTML = `Y-posisjon er ${kuleYtekst.toFixed(0)}`;
         //   console.log("X = " + kuleX + ", Y er = " + kuleY);
@@ -114,7 +112,6 @@ function skudd () {
         setTimeout(byttBilde, 700);
         if (kollisjon === false) {
             requestAnimationFrame(skudd);
-
         }
     }
 }
@@ -129,6 +126,7 @@ function regnUtKollisjon() {
     let absMellomBilder = Math.round(Math.sqrt(((vektorMellomBilder[0]) * (vektorMellomBilder[0])) + ((vektorMellomBilder[1]) * (vektorMellomBilder[1]))));
     //console.log("Abs mellom bilder er " + absMellomBilder);
     // console.log("Differanse i radius = " + radiusDifferanse);
+
     if (absMellomBilder <= 35) {
         console.log("Du traff blinken");
         kollisjon = true;
@@ -138,29 +136,21 @@ function regnUtKollisjon() {
         leggTilFiende();
         oppdaterBlink();
         nyttSkudd();
-        tekstTilbakemelding.style.color = "#4CAF50";
-        tekstTilbakemelding.innerHTML = "Grattis, du traff!";
     }
-    else if (kuleX > 1200  || kuleX<0 || kuleY > 600 || kuleY <-500) {
+    else if (kuleX > 800  || kuleX<0 || kuleY > 500 || kuleY <-300)  {
         console.log("Du bomma! Prøv igjen");
         kollisjon = true;
         seier = false;
         nyttSkudd()
-        if (minsteAvstandArray[0] < 30 && minsteAvstandArray[0] > 10) {
-            tekstTilbakemelding.style.color = "blue";
-            tekstTilbakemelding.innerHTML = "Det var nærme fienden!";
-            console.log("Det var nærme fienden")
-        } else {
-            tekstTilbakemelding.style.color = "red";
-            tekstTilbakemelding.innerHTML = "Du bomma, prøv igjen!"
-        }
     }
+
     for (let i = 0; i<antallFiender; i++){
+
         let fiendeX = fiendeArray[i][1];
         let fiendeY = fiendeArray[i][2];
         //console.log("Fiende x er " + Math.round(fiendeX) + "Fiende Y er " + Math.round(fiendeY))
         let vektorBlinkFiende = [kuleArray[1] - fiendeX, kuleArray[2] - fiendeY];
-        //console.log(vektorBlinkFiende);
+        //   console.log(vektorBlinkFiende);
         let absMellomBilder2 = Math.round(Math.sqrt(((vektorBlinkFiende[0]) * (vektorBlinkFiende[0])) + ((vektorBlinkFiende[1]) * (vektorBlinkFiende[1]))));
         //console.log("Abs er " + absMellomBilder2);
         minsteAvstandArray.push(absMellomBilder2);
@@ -172,8 +162,12 @@ function regnUtKollisjon() {
             reset();
         }
     }
+
     minsteAvstandArray.sort(function(a, b){return a - b});
+    console.log(minsteAvstandArray[0])
+
 }
+
 function nyttSkudd() {
     kuleY = 500;
     kuleY = kuleY - hoydeInp.value;
@@ -189,13 +183,8 @@ function nyttSkudd() {
     seier = false;
     startet= false;
     oppdaterTekst();
-
-    console.log(tilfeldigTall);
-    if (tilfeldigTall===1){
-        oppdaterTips();
-    }
-    tilfeldigTall = Math.round(Math.random()*3);
 }
+
 function reset() {
     kuleY = 500;
     kuleX = 20;
@@ -213,32 +202,33 @@ function reset() {
     seier = false;
     startet= false;
     nullstill = true;
-    fjernFiender();
+    fjernFiender()
     oppdaterBlink();
     oppdaterTekst();
-    tekstTilbakemelding.style.color = "black";
-    tekstTilbakemelding.innerHTML=`Du traff blinken ${antallSeier} ganger før du traff et sort hull `;
-    antallSeier = 0;
-    tekstSeier.innerHTML = `Antall treff: 0`
-   // window.location.href =
 }
+
 function oppdaterTekst(){
-    kuleYtekst = 500 - kuleY;
+    kuleYtekst = 400-kuleY;
     tekstXpos.innerHTML = `X-posisjon er ${kuleX.toFixed(0)}`;
     tekstYpos.innerHTML = `Y-posisjon er ${kuleYtekst.toFixed(0)}`;
     tekstHoyde.innerHTML = `Starthøyden er ${hoydeInp.value}`;
     tekstVinkel.innerHTML = `Vinkelen er ${vinkel} grader`;
     tekstSeier.innerHTML = `Antall treff: ${antallSeier}`;
-    console.log("minsteavstand array" + minsteAvstandArray[0]);
+
+
+    if(minsteAvstandArray[0] < 15){
+        console.log("Det var nære på!");
+    }
 }
+
 function oppdaterBlink(){
-    blinkX = (Math.random()*420)+ 600;
+    blinkX = (Math.random()*300)+ 420;
     blinkY= ((Math.random()*420))+80;
     blink.style.marginTop= blinkY + "px";
     blink.style.marginLeft= blinkX + "px";
 }
 hoydeInp.onchange  = function () {
-    if(startet===false) {
+    if(hoydeInp.value < (500) && startet===false) {
         kuleY = 500;
         kuleY = kuleY - hoydeInp.value;
         kule.style.marginTop = kuleY + "px";
@@ -246,14 +236,27 @@ hoydeInp.onchange  = function () {
         oppdaterTekst();
     }
 };
+
 vinkelInp.onchange = function () {
     vinkel = vinkelInp.value;
     if (startet === false) {
         fartX = fart * Math.cos(vinkel * Math.PI / 180);
         fartY = fart * Math.sin(vinkel * Math.PI / 180);
         oppdaterTekst();
+        let kanonCSS = [
+            {
+                transform: "rotate(0deg)"
+            },
+            {
+
+                transform: "rotate(" + vinkel + "deg)"
+            }
+        ];
+
+        // kanon.animate(kanonCSS,{duration:3000});
     }
 };
+
 tyngdekraftInp.onchange = function () {
     if (tyngdekraftInp.value === "1"){
         tyngdekraft = 0.1;
@@ -264,7 +267,10 @@ tyngdekraftInp.onchange = function () {
     else if (tyngdekraftInp.value === "3"){
         tyngdekraft = 0.3
     }
+
 };
+
+
 function leggTilFiende() {
     antallFiender+= 1;
     fiende = document.createElement("img");
@@ -272,7 +278,7 @@ function leggTilFiende() {
     fiende.className = "fiende";
     fiende.style.position= "absolute";
     //fiende.i = "stjerne1";
-    let fiendeStartX = (Math.random()*(900))+100;
+    let fiendeStartX = (Math.random()*(700))+100;
     let fiendeStartY =  (Math.random()*300)+200;
     fiende.style.marginLeft = fiendeStartX + "px";
     fiende.style.marginTop =  fiendeStartY + "px";
@@ -284,6 +290,7 @@ function leggTilFiende() {
     let fiendeKordinatArray = [fiende.id,fiendeStartX, fiendeStartY];
     fiendeArray.push(fiendeKordinatArray);
     console.log(fiendeArray)
+
 }
 function fjernFiender() {
     for (let h=1;h<antallFiender+1; h++) {
@@ -292,10 +299,6 @@ function fjernFiender() {
     }
     antallFiender=0;
     fiendeArray=[];
-    tekstSeier.innerHTML = `Antall treff: 0`
 }
-function oppdaterTips() {
-    let tilfeldigTips = tipsArray[(Math.round(Math.random()*(tipsArray.length-1)))];
-    tekstTips.innerHTML = tilfeldigTips;
 
-}
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let statsminister = {
+        fornavn: "Erna",
+        etternavn: "Solberg",
+        parti: "Høyre",
+        interesser: ["Nordmenn må få flere barn", "Sysselsettning", "Norske interesser i EU/EØS"],
+        fulltnavn: function () {
+            return this.fornavn + " " +  this.etternavn
+        }
+    };
+
+    console.log(statsminister.fulltnavn());
+
+
+</script>
+
+</body>
+</html>

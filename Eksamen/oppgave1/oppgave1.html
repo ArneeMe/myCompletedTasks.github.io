@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            margin-bottom: 10px;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="../oppgave1/oppgave1.html">Oppgave 1</a></li>
+    <li><a href="../oppgave2/oppgave2.html">Oppgave 2</a></li>
+    <li><a  href="../oppgave3/oppgave3.html">Oppgave 3</a></li>
+</ul>
+<select id="sel1">
+    <option> Velg et land!</option>
+    <option value="spania">Spania</option>
+    <option value="england">England</option>
+    <option value="polen">Polen</option>
+    <option value="portugal">Portugal</option>
+</select>
+
+<select id="sel2"></select>
+<input id="dager" type="number">
+<p id="totalpris"> Total</p>
+<script>
+    const sel1 = document.querySelector("#sel1");
+    const sel2 = document.querySelector("#sel2");
+    const dagerInp =document.querySelector("#dager");
+    const totalPris = document.querySelector("#totalpris");
+    let spania = [100,"spania",["Madrid",100],["Barcelona",200],"teneriffe"];
+    let england =[200,"england","London","Manchester"];
+    let portugal = [300, "portugal", "Lisboa", "Gurkimeie"];
+    let landListe = [spania,england,portugal];
+
+    sel1.onchange = function () {
+        sel2.innerHTML = "";
+        for (let land of landListe) {
+            if (sel1.value === land[1]) {
+                for (let i = 2; i < land.length; i++) {
+                    sel2.innerHTML += `<option value="${land[i][1]}">${land[i][0]} </option>`
+                }
+            }
+        }
+    };
+    sel2.onchange = function () {
+        totalPris.innerHTML = sel2.value + "kr";
+    };
+    window.onload = function () {
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            margin-bottom: 10px;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+        .active {
+            background-color: #4CAF50;
+        }
+        .div{
+            margin-top: 0px;
+            width: 360px;
+            height: 170px;
+            position: absolute;
+        }
+        #bilde{
+            margin-top: 0px;
+        }
+        #fjell1{
+           margin-top: 0px;
+
+        }
+        #fjell2{
+            margin-top: 170px;
+
+             }
+        #fjell3{
+            margin-top: 340px;
+
+        }
+
+    </style>
+</head>
+<body>
+<h1>REA3015 Eksamen  28.05.2019</h1>
+<ul>
+    <li><a  class="active" href="../oppgave1/oppgave1.html">Oppgave 1</a></li>
+    <li><a  href="../oppgave2/oppgave2.html">Oppgave 2</a></li>
+    <li><a  href="../oppgave3/oppgave3.html">Oppgave 3</a></li>
+</ul>
+
+
+<div id="fjell1" class="div" onclick="fjell1Tekst()"></div>
+<div id="fjell2" class="div" onclick="fjell2Tekst()"></div>
+<div id="fjell3" class="div" onclick="fjell3Tekst()"></div>
+
+<img src="fjellRedigert.jpg" alt="Bilde av fjell" id="bilde">
+<p id="tilbakemelding"> Tykk på bilde og du får se en beskrivelse av det!</p>
+
+
+<script>
+
+    const tilbakemelding = document.querySelector("#tilbakemelding");
+
+    function fjell1Tekst() {
+        tilbakemelding.innerHTML =
+        `Du tykket på bilde 1, dette burde være et JPG. Grunnen til dette er fordi ikke er noe
+        gjenomsiktig og det bruker mye mindre filstørrelse enn feks PNG.
+        JPG faller under kategorien punktgrafikk, hvor vi måler størrelsen i piksler i høyden og bredden
+        Brukt til det meste på internettet`
+
+    }
+    function fjell2Tekst() {
+        tilbakemelding.innerHTML =
+        `Du trykket på bilde 2. Anbefalt filformat er PNG. PNG er bra å bruke på internett, da det er ikke-ødeleggende
+         men også kan brukes til å fjerne bakgrunner og i dette tilfellet deler av bakgrunnen.
+         PNG er punktgrafikk hvor vi som JPG måler pikser i lengden og bredden.`
+    }
+    function fjell3Tekst() {
+        tilbakemelding.innerHTML =
+            `Du trykket på bilde 3. Anbefalt filformat er PNG. PNG er bra å bruke på internett, da det er ikke-ødeleggende
+         men også kan brukes til å fjerne bakgrunner og i dette tilfellet hele bakgrunnen.
+         Ikke-ødeleggende er spesielt viktig når vi snakker om logoer som man ønser store.
+         En annen anbefaling når vi snakker om store logoer er vektorgrafikk, som gjør at man kan gjøre bildet så stort som mulig
+         uten at det taper kvalitet. En typisk vektorgrafikk-filformat er svg og er svært vanlig til spesielt logoer.
+            `
+
+    }
+
+</script>
+</body>
+</html>

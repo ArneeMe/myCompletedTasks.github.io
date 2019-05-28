@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 2</title>
+
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            margin-bottom: 10px;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<h1>REA3015 Eksamen  28.05.2019</h1>
+<ul>
+    <li><a href="../oppgave1/oppgave1.html">Oppgave 1</a></li>
+    <li><a class="active" href="../oppgave2/oppgave2.html">Oppgave 2</a></li>
+    <li><a  href="../oppgave3/oppgave3.html">Oppgave 3</a></li>
+</ul>
+
+<input type="number" id="lengde" placeholder="Skriv in lengde">
+<input type="number" id="bredde" placeholder="Skriv in bredde">
+<button id="regnUt" onclick="regnUt()">Regn ut</button>
+<p id="tilbakemelding"> Skriv inn antall piksler i lengde og bredden</p>
+<img id="bilde">
+
+<script>
+    const lengde = document.querySelector("#lengde");
+    const bredde = document.querySelector("#bredde");
+    const tilbakemelding = document.querySelector("#tilbakemelding");
+    const bilde = document.querySelector("#bilde");
+    let antallPiksler;
+
+    function regnUt() {
+        if (Number(bredde.value)<=1920) {
+            antallPiksler = Number(lengde.value) * Number(bredde.value);
+            tilbakemelding.innerHTML = `Med lengde ${lengde.value} px og bredde ${bredde.value} px, blir summen ${antallPiksler} px eller ${antallPiksler / 1000000} Mpx (MegaPiksler)`
+
+            if (lengde.value > bredde.value) {
+                bilde.src = "liggende.jpg";
+                console.log("hei")
+            }
+            if (lengde.value === bredde.value) {
+                bilde.src = "kvadratisk.jpg";
+            }
+            if (lengde.value < bredde.value) {
+                bilde.src = "staende.jpg";
+            }
+        }
+        else {
+            tilbakemelding.innerHTML = `Vennligst skriv inn en bredde som ikke er over 1920 px`
+        }
+    }
+</script>
+
+</body>
+</html>

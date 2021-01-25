@@ -8,4 +8,4 @@ document.getElementById("strand").src="https://images.pexels.com/photos/533923/p
 
 document.body.style.backgroundColor= "blue";
 
-document.getElementById().width=150px
+document.getElementById().width=150 +"px";
